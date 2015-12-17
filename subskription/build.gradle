@@ -1,5 +1,7 @@
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 23
@@ -9,7 +11,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName "0.1.0"
     }
     buildTypes {
         release {
@@ -18,7 +20,6 @@ android {
         }
     }
 }
-
 
 dependencies {
     testCompile 'junit:junit:4.12'
@@ -30,9 +31,11 @@ dependencies {
 buildscript {
     ext.kotlin_version = '1.0.0-beta-3595'
     repositories {
+        jcenter()
         mavenCentral()
     }
     dependencies {
+        classpath 'com.novoda:bintray-release:0.3.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -41,3 +44,14 @@ repositories {
     mavenCentral()
 }
 
+publish {
+    userOrg = 'yamamotoj'
+    groupId = 'com.github.yamamotoj.subskription'
+    artifactId = 'subskription'
+    uploadName = 'subskription'
+    publishVersion = "0.1.0"
+    desc = 'RxJava subscription helper for Kotlin'
+    website = 'https://github.com/yamamotoj/subskription'
+    repository = 'git@github.com:yamamotoj/subskription.git'
+    licences = [' MIT ']
+}
