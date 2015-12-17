@@ -53,5 +53,5 @@ publish {
     desc = 'RxJava subscription helper for Kotlin'
     website = 'https://github.com/yamamotoj/subskription'
     repository = 'git@github.com:yamamotoj/subskription.git'
-    licences = [' MIT ']
+    licences = ['MIT']
 }
