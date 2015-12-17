@@ -46,7 +46,7 @@ repositories {
 
 publish {
     userOrg = 'yamamotoj'
-    groupId = 'com.github.yamamotoj.subskription'
+    groupId = 'com.github.yamamotoj'
     artifactId = 'subskription'
     uploadName = 'subskription'
     publishVersion = "0.1.0"
