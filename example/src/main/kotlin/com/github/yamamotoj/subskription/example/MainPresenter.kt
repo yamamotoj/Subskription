@@ -5,12 +5,12 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.github.yamamotoj.subskription.AutoUnsubscribable
-import com.github.yamamotoj.subskription.AutoUnsubscriber
+import com.github.yamamotoj.subskription.AutoUnsubscribableDelegate
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import java.util.concurrent.TimeUnit
 
-class MainPresenter(val context: Context, val view: View) : AutoUnsubscribable by AutoUnsubscriber() {
+class MainPresenter(val context: Context, val view: View) : AutoUnsubscribable by AutoUnsubscribableDelegate() {
 
     val emitter = Observable.interval(1, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread())
 

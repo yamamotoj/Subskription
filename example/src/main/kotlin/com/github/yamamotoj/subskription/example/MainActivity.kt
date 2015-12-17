@@ -3,9 +3,9 @@ package com.github.yamamotoj.subskription.example
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.github.yamamotoj.subskription.AutoUnsubscribable
-import com.github.yamamotoj.subskription.AutoUnsubscriber
+import com.github.yamamotoj.subskription.AutoUnsubscribableDelegate
 
-class MainActivity : AppCompatActivity(), AutoUnsubscribable by AutoUnsubscriber() {
+class MainActivity : AppCompatActivity(), AutoUnsubscribable by AutoUnsubscribableDelegate() {
 
     lateinit var presenter: MainPresenter
 

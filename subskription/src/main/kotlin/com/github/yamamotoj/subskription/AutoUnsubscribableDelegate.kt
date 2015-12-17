@@ -7,7 +7,7 @@ import rx.lang.kotlin.subscriber
 import rx.subscriptions.CompositeSubscription
 
 
-class AutoUnsubscriber : AutoUnsubscribable {
+class AutoUnsubscribableDelegate : AutoUnsubscribable {
 
     private val subscriptionMap = hashMapOf<Any?, CompositeSubscription>()
     private val children = arrayListOf<AutoUnsubscribable>()
@@ -46,12 +46,12 @@ class AutoUnsubscriber : AutoUnsubscribable {
 
     override fun addAutoUnsubscrivable(autoUnsubscribable: AutoUnsubscribable) =
             children.add(autoUnsubscribable).let {
-                (autoUnsubscribable as? AutoUnsubscriber)?.parent = this
+                (autoUnsubscribable as? AutoUnsubscribableDelegate)?.parent = this
                 Unit
             }
     override fun removeAutoUnsubscrivable(autoUnsubscribable: AutoUnsubscribable) =
             children.remove(autoUnsubscribable).let {
-                (autoUnsubscribable as? AutoUnsubscriber)?.parent = null
+                (autoUnsubscribable as? AutoUnsubscribableDelegate)?.parent = null
                 Unit
             }
 }
