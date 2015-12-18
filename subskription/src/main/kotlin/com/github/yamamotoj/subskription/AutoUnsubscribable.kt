@@ -10,6 +10,6 @@ interface AutoUnsubscribable {
     fun Subscription.autoUnsubscribe(key:Any):Unit
     fun unsubscribe():Unit
     fun unsubscribe(key:Any):Unit
-    fun addAutoUnsubscrivable(autoUnsubscribable: AutoUnsubscribable):Unit
-    fun removeAutoUnsubscrivable(autoUnsubscribable: AutoUnsubscribable):Unit
+    fun addAutoUnsubscribable(autoUnsubscribable: AutoUnsubscribable):Unit
+    fun removeAutoUnsubscribable(autoUnsubscribable: AutoUnsubscribable):Unit
 }
