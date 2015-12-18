@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity(), AutoUnsubscribable by AutoUnsubscribab
         setContentView(R.layout.activity_main)
         val rootView = findViewById(android.R.id.content)
         presenter = MainPresenter(this, rootView)
-        addAutoUnsubscrivable(presenter)
+        addAutoUnsubscribable(presenter)
     }
 
     override fun onPause() {
