@@ -40,16 +40,16 @@ class AutoUnsubscribableDelegate : AutoUnsubscribable {
     override fun unsubscribe() {
         subscriptionMap.values.forEach { it.unsubscribe() }
         subscriptionMap.clear()
-        parent?.removeAutoUnsubscrivable(this)
+        parent?.removeAutoUnsubscribable(this)
         children.forEach { it.unsubscribe() }
     }
 
-    override fun addAutoUnsubscrivable(autoUnsubscribable: AutoUnsubscribable) =
+    override fun addAutoUnsubscribable(autoUnsubscribable: AutoUnsubscribable) =
             children.add(autoUnsubscribable).let {
                 (autoUnsubscribable as? AutoUnsubscribableDelegate)?.parent = this
                 Unit
             }
-    override fun removeAutoUnsubscrivable(autoUnsubscribable: AutoUnsubscribable) =
+    override fun removeAutoUnsubscribable(autoUnsubscribable: AutoUnsubscribable) =
             children.remove(autoUnsubscribable).let {
                 (autoUnsubscribable as? AutoUnsubscribableDelegate)?.parent = null
                 Unit
