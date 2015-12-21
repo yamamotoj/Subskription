@@ -9,6 +9,7 @@ import rx.subscriptions.CompositeSubscription
 
 class AutoUnsubscribableDelegate : AutoUnsubscribable {
 
+
     private val subscriptionMap = hashMapOf<Any?, CompositeSubscription>()
     private val children = arrayListOf<AutoUnsubscribable>()
     private var parent: AutoUnsubscribable? = null
@@ -31,6 +32,9 @@ class AutoUnsubscribableDelegate : AutoUnsubscribable {
     override fun Subscription.autoUnsubscribe() = compositeSubscriptionForKey(null).add(this)
     override fun Subscription.autoUnsubscribe(key: Any) = compositeSubscriptionForKey(key).add(this)
 
+    override fun addSubscription(subscription: Subscription) = compositeSubscriptionForKey(null).add(subscription)
+    override fun addSubscription(subscription: Subscription, key: Any) = compositeSubscriptionForKey(key).add(subscription)
+
     override fun unsubscribe(key: Any) {
         subscriptionMap[key]?.unsubscribe()
         subscriptionMap.remove(key)
@@ -49,6 +53,7 @@ class AutoUnsubscribableDelegate : AutoUnsubscribable {
                 (autoUnsubscribable as? AutoUnsubscribableDelegate)?.parent = this
                 Unit
             }
+
     override fun removeAutoUnsubscribable(autoUnsubscribable: AutoUnsubscribable) =
             children.remove(autoUnsubscribable).let {
                 (autoUnsubscribable as? AutoUnsubscribableDelegate)?.parent = null
